@@ -1,8 +1,6 @@
 package com.insurance.controller;
 
 import java.util.List;
-import java.util.stream.Collectors;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,8 +13,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.insurance.entities.User;
-import com.insurance.exceptions.ResourceNotFoundException;
 import com.insurance.payloads.UserDTO;
 import com.insurance.serviceimpl.UserServiceImpl;
 

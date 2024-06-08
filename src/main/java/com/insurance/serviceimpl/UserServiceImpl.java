@@ -3,6 +3,7 @@ package com.insurance.serviceimpl;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +19,9 @@ public class UserServiceImpl implements UserService {
 
 	@Autowired
 	private UserRepo userRepo;
+	
+	@Autowired
+	private ModelMapper modelMapper;
 
 	@Override
 	public UserDTO createUser(UserDTO userDTO) {
@@ -60,21 +64,24 @@ public class UserServiceImpl implements UserService {
 
 	// Method to convert dto to user
 	public User dtoToUser(UserDTO userDTO) {
-		User user = new User();
+		User user = modelMapper.map(userDTO, User.class);
+		/*User user = new User();
 		user.setUserId(userDTO.getUserId());
 		user.setUsername(userDTO.getUsername());
 		user.setPassword(userDTO.getPassword());
-		user.setMobileNumber(userDTO.getMobileNumber());
+		user.setMobileNumber(userDTO.getMobileNumber());*/
 		return user;
 	}
 
 	// Method to convert user to dto
 	public UserDTO userToDto(User user) {
-		UserDTO userDTO = new UserDTO();
-		userDTO.setUserId(user.getUserId());
-		userDTO.setUsername(user.getUsername());
-		userDTO.setPassword(user.getPassword());
-		userDTO.setMobileNumber(user.getMobileNumber());
+		UserDTO userDTO = modelMapper.map(user, UserDTO.class);
+		/*
+		 * UserDTO userDTO = new UserDTO(); userDTO.setUserId(user.getUserId());
+		 * userDTO.setUsername(user.getUsername());
+		 * userDTO.setPassword(user.getPassword());
+		 * userDTO.setMobileNumber(user.getMobileNumber());
+		 */
 		return userDTO;
 	}
 }
