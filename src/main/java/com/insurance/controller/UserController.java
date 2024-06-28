@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.insurance.payloads.UserDTO;
 import com.insurance.serviceimpl.UserServiceImpl;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/user")
 public class UserController {
@@ -24,7 +26,7 @@ public class UserController {
 	private UserServiceImpl userServiceImpl;
 
 	@PostMapping("/save")
-	public ResponseEntity<UserDTO> saveUser(@RequestBody UserDTO userDTO) {
+	public ResponseEntity<UserDTO> saveUser(@Valid @RequestBody UserDTO userDTO) {
 		UserDTO userDTO1 = userServiceImpl.createUser(userDTO);
 		return new ResponseEntity<>(userDTO1, HttpStatus.CREATED);
 	}

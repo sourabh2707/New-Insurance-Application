@@ -60,6 +60,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void dropUser(int id) {
 		userRepo.findById(id).orElseThrow(() -> new ResourceNotFoundException("User", "User_Id", id));
+		userRepo.deleteById(id);
 	}
 
 	// Method to convert dto to user
